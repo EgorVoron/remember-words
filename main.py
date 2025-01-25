@@ -24,7 +24,7 @@ for dictionary_filename in os.listdir(f'dictionaries/{language}'):
     command_to_dict_path[dictionary_name + '_to'] = file_path
 
 words_num = None
-command = input(f'command from {list(command_to_dict_path.keys())}: ')
+command = input(f'choose dictionary from {list(command_to_dict_path.keys())}: ')
 if '/' in command:
     command, _, words_num = command.partition('/')
 command_type = command.rpartition('_')[2]
