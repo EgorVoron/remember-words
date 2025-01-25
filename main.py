@@ -2,12 +2,13 @@ from random import shuffle
 import json
 import os
 import datetime
+import sys
 
 from websites_utils import get_ligvolive_page
 from utils import get_variants, cut, reverse_dict
 
-language = 'latin'
-website = 'lingvolive'
+language = sys.argv[1] if len(sys.argv) > 1 else 'latin'
+website = sys.argv[2] if len(sys.argv) > 2 else 'lingvolive'
 
 """
 from = foreign -> native
