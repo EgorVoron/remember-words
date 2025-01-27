@@ -44,6 +44,7 @@ shuffle(chosen_dict_items)
 
 words_num = int(words_num) if words_num else len(chosen_dict_items)
 r = 0
+errors: dict[str, str] = {}
 for idx, words_pair in enumerate(chosen_dict_items[:words_num]):
     source_word, target_word = words_pair
     user_input = input(f'{source_word}: ')
@@ -64,8 +65,12 @@ for idx, words_pair in enumerate(chosen_dict_items[:words_num]):
         mistype = input('if you were right but mistyped please type "1": ')
         if mistype == "1":
             r += 1
+        else:
+            errors.update({source_word: target_word})
     print(f'current score: {r}/{idx + 1}')
     print('-' * 20)
+print('=' * 20)
+print(f'remember this words: {errors}')
 
 with open(f'scores/{language}/{command}.txt', 'a') as scores_file:
     scores_file.write(f'{datetime.datetime.now()}, {r}/{words_num}\n')
