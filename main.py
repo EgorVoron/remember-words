@@ -29,14 +29,14 @@ if '/' in command:
     command, _, words_num = command.partition('/')
 command_type = command.rpartition('_')[2]
 
-with open(command_to_dict_path[command], 'r+') as dictionary_file:
+with open(command_to_dict_path[command], 'r+', encoding='utf-8') as dictionary_file:
     dictionary_json = json.load(dictionary_file)
     if command_type == "to":
         dictionary_json = reverse_dict(dictionary_json)
 
 use_website = int(input(f'do you want me to use {website}.com data? 1/0 '))
 if use_website:
-    with open(f'dictionaries/{language}/websites_dictionaries/{website}.json', 'r+') as wf:
+    with open(f'dictionaries/{language}/websites_dictionaries/{website}.json', 'r+', encoding='utf-8') as wf:
         website_dict = json.load(wf)
 
 chosen_dict_items = list(dictionary_json.items())
